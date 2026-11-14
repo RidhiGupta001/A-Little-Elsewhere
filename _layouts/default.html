@@ -102,6 +102,9 @@ nav{gap:.7rem .8rem}
 [hidden]{display:none!important}
 @media (max-width:720px){.hero{grid-template-columns:1fr}body{font-size:1.15rem}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.desk-quote{margin:1.15rem 0 0;padding:.85rem 0 0;border-top:1px solid var(--rule);font-family:var(--serif);font-style:italic;font-size:1.25rem;line-height:1.35;color:var(--soft)}
+.desk-quote::before{content:"“";font-size:1.5em;color:var(--red);margin-right:.12em}
+.desk-quote::after{content:"”";font-size:1.5em;color:var(--red);margin-left:.08em}
 </style>
 </head>
 <body>
@@ -109,7 +112,7 @@ nav{gap:.7rem .8rem}
   <div class="top"><span id="issue">Issue No. 1 &middot; Open late &mdash; silence, please</span><span><button id="theme" aria-label="Toggle lamp">☾ Lamp</button></span></div>
   <h1 class="name">The Little <em>Elsewhere</em></h1>
   <p class="tag">A small magazine of one &mdash; essays, observations &amp; things found late at night.</p>
-  <nav aria-label="Sections"><button type="button" data-category="all" class="on">All</button><button type="button" data-category="Books">Books</button><button type="button" data-category="Technology">Technology</button><button type="button" data-category="Diary">Diary</button></nav>
+  <nav aria-label="Sections"><button type="button" data-filter="all" class="on">All</button><button type="button" data-filter="Books">Books</button><button type="button" data-filter="Technology">Technology</button><button type="button" data-filter="Diary">Diary</button></nav>
 
   {{ content }}
   <p id="filter-empty" class="meta" role="status" hidden style="text-align:center;margin:1.5rem 0">Nothing in this section just yet. Perhaps it’s still being written.</p>
