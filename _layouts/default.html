@@ -112,6 +112,7 @@ nav{gap:.7rem .8rem}
   <nav aria-label="Sections"><button type="button" data-category="all" class="on">All</button><button type="button" data-category="Books">Books</button><button type="button" data-category="Technology">Technology</button><button type="button" data-category="Diary">Diary</button></nav>
 
   {{ content }}
+  <p id="filter-empty" class="meta" role="status" hidden style="text-align:center;margin:1.5rem 0">Nothing in this section just yet. Perhaps it’s still being written.</p>
 
   <footer>&copy; <span id="yr"></span> The Little Elsewhere &middot; Set in a quiet room &middot; <span class="ding">ding!</span></footer>
 </div>
@@ -136,6 +137,39 @@ nav{gap:.7rem .8rem}
       root.dataset.theme = dark ? "light" : "dark";
     });
   }
+
+  // Filter the published story cards without reloading the page.
+  var filterButtons = document.querySelectorAll("nav [data-filter]");
+  var storyCards = document.querySelectorAll("#grid [data-category]");
+  var gridTitle = document.getElementById("gridtitle");
+  var emptyMessage = document.getElementById("filter-empty");
+
+  function applyFilter(category) {
+    var visibleCount = 0;
+    storyCards.forEach(function (card) {
+      var matches = category === "all" ||
+        (card.getAttribute("data-category") || "Diary").toLowerCase() === category.toLowerCase();
+      card.hidden = !matches;
+      if (matches) visibleCount += 1;
+    });
+
+    filterButtons.forEach(function (button) {
+      var active = button.getAttribute("data-filter") === category;
+      button.classList.toggle("on", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+
+    if (gridTitle) {
+      gridTitle.textContent = category === "all" ? "New Arrivals" : category;
+    }
+    if (emptyMessage) emptyMessage.hidden = visibleCount !== 0;
+  }
+
+  filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      applyFilter(button.getAttribute("data-filter"));
+    });
+  });
 
   var typed = document.getElementById("typed");
   var message = "If not now, when?\nThe little things are the whole story.";
