@@ -1,0 +1,36 @@
+backend:
+  name: turbo-github
+  turbo_site_id: e126d70f-ae9c-4f3d-b6be-fcfedd75443d
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: "https://ridhiguptathinks.in"
+display_url: "https://ridhiguptathinks.in"
+logo_url: "https://ridhiguptathinks.in/favicon.ico"
+
+publish_mode: simple
+
+collections:
+  - name: "posts"
+    label: "Stories"
+    label_singular: "Story"
+    folder: "_posts"
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    preview_path: "{{year}}/{{month}}/{{day}}/{{slug}}/"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish date", name: "date", widget: "datetime" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Books", "Technology", "Diary"]
+        default: "Diary"
+      - { label: "Short description", name: "description", widget: "text", required: false }
+      - { label: "Cover photograph", name: "cover", widget: "image", required: false }
+      - { label: "Story", name: "body", widget: "markdown" }

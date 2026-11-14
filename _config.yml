@@ -1,0 +1,7 @@
+title: The Little Elsewhere
+url: "https://ridhiguptathinks.in"
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+plugins: []
+exclude:
+  - README.md

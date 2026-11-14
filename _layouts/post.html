@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<main id="home">
+  <article class="read">
+    <a class="back more" href="{{ '/' | relative_url }}">← Back to the magazine</a>
+    <div class="meta">{{ page.category | default: 'Diary' | escape }} · {{ page.date | date: "%B %d, %Y" }}</div>
+    <h2>{{ page.title | escape }}</h2>
+    {% if page.description %}<p class="dropcap">{{ page.description | escape }}</p>{% endif %}
+    {% if page.cover %}<figure><img src="{{ page.cover | relative_url }}" alt="{{ page.title | escape }}"></figure>{% endif %}
+    <hr class="rule">
+    {{ content }}
+  </article>
+</main>
