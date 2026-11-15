@@ -3,7 +3,7 @@ title: "Impulsive Purchase "
 date: 2026-11-15T20:45:00.000+05:30
 category: Diary
 description: Pampering myself ;)
-cover: https://pin.it/1yIjYhdQH
+cover: /images/uploads/photo.jpg
 ---
 Hi again,
 
